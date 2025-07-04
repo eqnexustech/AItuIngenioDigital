@@ -1,0 +1,644 @@
+/* Variables para colores y tipografía */
+:root {
+    --primary-color: #2c3e50; /* Azul oscuro/gris de EQ Nexus Tech */
+    --accent-color: #3498db;  /* Azul más claro */
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+    --white: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-body: 'Open Sans', Arial, sans-serif;
+}
+
+/* Reset básico y estilos generales */
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    overflow-x: hidden; /* Previene scroll horizontal */
+    padding-top: 70px; /* Ajuste para la barra de navegación fija */
+}
+
+.infographic-container {
+    max-width: 900px; /* Ancho máximo de la infografía */
+    margin: 20px auto;
+    background-color: var(--white);
+    box-shadow: 0 4px 15px var(--shadow-light);
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen bien */
+}
+
+.section {
+    padding: 40px 30px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.8em;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px var(--shadow-light);
+}
+
+h2 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/* Navigation Menu */
+.main-nav {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-nav .nav-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: var(--white);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap; /* Asegura que los enlaces permanezcan en una sola línea */
+    overflow-x: auto; /* Permite desplazamiento horizontal si los enlaces son demasiados largos para la pantalla */
+    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
+}
+
+.nav-links li {
+    margin-left: 15px; /* Reducido para dar más espacio */
+    flex-shrink: 0; /* Previene que los items se encojan */
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85em; /* Reducido ligeramente */
+    white-space: nowrap; /* Mantiene el texto del enlace en una sola línea */
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Hamburger Menu (for mobile) */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Estilos específicos de secciones */
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding-top: 60px;
+    padding-bottom: 30px;
+    border-radius: 10px 10px 0 0;
+}
+.header h1 {
+    color: var(--white);
+    font-size: 3.2em; /* Ligeramente más grande para impacto */
+    margin-bottom: 10px;
+}
+.header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Mito y Realidad */
+.myth-reality {
+    background-color: var(--light-bg); /* Fondo más claro para contraste */
+}
+.myth-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Para responsividad */
+}
+.myth, .reality {
+    flex: 1;
+    min-width: 280px; /* Asegura que no se hagan demasiado pequeños */
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    position: relative;
+    text-align: center; /* Centra el contenido dentro de las cajas */
+}
+.myth i, .reality i {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    display: block; /* Para centrar los íconos */
+}
+.myth i.fa-robot { color: #e74c3c; /* Rojo para el mito */ }
+.myth .myth-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: #e74c3c;
+}
+.reality i.fa-brain, .reality i.fa-robot { color: #2ecc71; /* Verde para la realidad */ }
+.reality .reality-plus {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    color: #2ecc71;
+}
+.myth h3 { color: #e74c3c; margin-top: 0; } /* Estilo para el título MITO */
+.reality h3 { color: #2ecc71; margin-top: 0; } /* Estilo para el título REALIDAD */
+.myth p, .reality p {
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
+/* Nuevo Paradigma de Programación Section (No modificado en esta ocasión, pero presente) */
+.programming-paradigm {
+    background-color: var(--white);
+}
+
+.paradigm-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.paradigm-box {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--light-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.paradigm-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.paradigm-box p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+
+/* Rol Evolucionado */
+.role-evolution {
+    background-color: var(--light-bg);
+}
+.role-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.point {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center; /* Centra el ícono y título */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto hover */
+}
+.point:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+.point i {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 15px; /* Más espacio */
+    display: block;
+}
+.point h3 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.point p {
+    font-size: 0.95em;
+    text-align: left; /* Alinea el párrafo a la izquierda para mejor lectura */
+}
+
+.ai-as-partner { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ai-as-partner h3 { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    color: var(--accent-color);
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+
+/* Por Qué la Programación Seguirá Siendo Clave Section (No modificado en esta ocasión, pero presente) */
+.why-programming-key {
+    background-color: var(--white);
+}
+
+.emphasized-reason {
+    font-size: 1.1em;
+    font-weight: bold; /* Mantener bold o cambiar a italic via CSS si se quiere el <em> */
+    color: var(--accent-color);
+    margin-top: 25px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+
+.key-points-grid { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.key-point-item { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    background-color: var(--light-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-point-item:hover { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.key-point-item h4 { /* Este bloque no estaba presente en el último HTML pero el CSS lo tenía */
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.key-point-item p {
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+
+/* EQ Nexus Tech Section */
+.eq-nexus-tech {
+    background-color: var(--light-bg);
+}
+
+/* Nuevo estilo para el logo dentro del título h2 */
+.title-logo {
+    height: 1.2em; /* Ajusta la altura para que sea proporcional al tamaño de la letra del h2 */
+    width: auto; /* Mantiene la proporción de la imagen */
+    vertical-align: middle; /* Alinea el centro del logo con el centro de la línea de texto */
+    margin-right: 8px; /* Espacio a la derecha del logo */
+}
+
+.logo-placeholder {
+    /* Si el logo se mueve al h2, este div puede ser opcional o usarse para otro propósito */
+    /* original: .logo-placeholder img { max-width: 200px; height: auto; margin: 20px auto; display: block; } */
+}
+
+
+.eq-nexus-tech h3 {
+    margin-top: 30px;
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+.service-item {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto hover */
+}
+.service-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.service-item i {
+    font-size: 2.8em;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+.service-item h4 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+.service-item p {
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+/* LinkedIn Articles Section */
+.linkedin-articles {
+    background-color: var(--white);
+    padding: 40px 30px;
+    border-top: 1px solid #eee;
+}
+
+.linkedin-articles h2 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+}
+
+.linkedin-articles > p { /* Targeting the introductory paragraph */
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.article-item {
+    background-color: var(--light-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-item h3 {
+    font-size: 1.3em;
+    color: var(--accent-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.article-item p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 0; /* Remove default paragraph margin */
+}
+
+.article-item p a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+}
+
+.article-item p a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+.final-statement {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    padding-top: 20px;
+    border-top: 1px dashed #ddd;
+    margin-top: 30px;
+}
+
+/* Call to Action (CTA) */
+.cta {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding-bottom: 40px;
+    border-radius: 0 0 10px 10px;
+}
+.cta h2 {
+    color: var(--white);
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+.cta p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+.cta-button {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--accent-color);
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+.cta-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+.social-links {
+    margin-top: 30px;
+}
+.social-links a {
+    color: var(--white);
+    font-size: 2em;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.social-links a:hover {
+    color: #f0f0f0;
+    transform: translateY(-2px);
+}
+.social-links p {
+    margin-top: 15px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+
+/* === Media Queries para Responsividad === */
+@media (max-width: 768px) {
+    .infographic-container {
+        margin: 10px;
+    }
+    .section {
+        padding: 30px 20px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .header h1 {
+        font-size: 2.8em; /* Ajuste para pantallas medianas */
+    }
+    .header p {
+        font-size: 1em;
+    }
+    .myth-content, .paradigm-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .myth, .reality, .paradigm-box {
+        min-width: unset;
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+    .role-points, .key-points-grid, .article-list {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 2-3 columnas */
+    }
+    .service-item {
+        padding: 15px;
+    }
+    .cta h2 {
+        font-size: 2em;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .emphasized-reason {
+        font-size: 1em; /* Ajuste para pantallas pequeñas */
+    }
+    .title-logo {
+        height: 1em; /* Ajuste para pantallas pequeñas */
+    }
+
+    /* Responsive adjustments for navigation */
+    .nav-links {
+        display: none; /* Hide nav links on smaller screens */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show hamburger on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .header h1 {
+        font-size: 2.2em; /* Ajuste para pantallas pequeñas */
+    }
+    .header p {
+        font-size: 1em;
+    }
+    .myth h3, .reality h3 { /* Ajusta el tamaño de los títulos de mito/realidad */
+        font-size: 1.3em;
+    }
+    .myth p, .reality p {
+        font-size: 0.95em;
+    }
+    .point h3, .service-item h4, .key-point-item h4 {
+        font-size: 1.2em;
+    }
+    .service-item i {
+        font-size: 2.2em;
+    }
+    .cta h2 {
+        font-size: 1.8em;
+    }
+}
