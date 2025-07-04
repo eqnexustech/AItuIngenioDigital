@@ -88,6 +88,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Asegura que .nav-links se posicione correctamente en móvil */
 }
 
 .nav-logo {
@@ -537,6 +538,15 @@ p {
 
 /* === Media Queries para Responsividad === */
 @media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Adjust for fixed nav height */
+    }
+    .main-nav {
+        padding: 10px 20px; /* Reducir padding en móvil */
+    }
+    .nav-logo {
+        font-size: 1.3em; /* Ajustar tamaño del logo en móvil */
+    }
     .infographic-container {
         margin: 10px;
     }
@@ -587,20 +597,31 @@ p {
     }
 
     /* Responsive adjustments for navigation */
+    .main-nav .nav-content {
+        position: relative; /* CRUCIAL: Asegura que .nav-links se posicione correctamente */
+    }
+
     .nav-links {
-        display: none; /* Hide nav links on smaller screens */
+        display: flex; /* Mantenemos flex para la dirección de columna */
         flex-direction: column;
         width: 100%;
         background-color: var(--primary-color);
         position: absolute;
-        top: 100%; /* Position below the header */
+        top: 100%; /* Posiciona justo debajo del nav-content */
         left: 0;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        padding: 10px 0;
+        max-height: 0; /* Inicialmente oculto, no ocupa espacio */
+        overflow: hidden; /* Oculta el contenido que se desborda */
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out; /* Transición suave */
+        opacity: 0; /* Inicialmente transparente */
+        pointer-events: none; /* No interactuable cuando está colapsado */
+        z-index: 999; /* Asegura que esté por encima de otro contenido */
     }
 
     .nav-links.active {
-        display: flex; /* Show when active */
+        max-height: 300px; /* Altura suficiente para mostrar todos los enlaces */
+        opacity: 1; /* Completamente visible */
+        pointer-events: auto; /* Interactuable cuando está activo */
     }
 
     .nav-links li {
@@ -609,7 +630,7 @@ p {
     }
 
     .hamburger-menu {
-        display: flex; /* Show hamburger on smaller screens */
+        display: flex; /* Muestra el icono de hamburguesa */
     }
 }
 
